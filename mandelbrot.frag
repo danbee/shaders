@@ -9,7 +9,7 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
-const int max_i = 500;
+const int max_i = 750;
 
 // x -0.922947648473392 y 0.29140221214586537
 // zoom 0.0001120703125
@@ -17,11 +17,12 @@ const int max_i = 500;
 const vec2 centre = vec2(0.0,0.0);
 const float radius = 2.0;
 
-//const vec2 z_centre = vec2(-0.813118939, 0.203263184);
-const vec2 z_centre = vec2(-0.811709827, 0.202253267);
+const vec2 z_centre = vec2(-0.813118939, 0.203263184);
+//const vec2 z_centre = vec2(-0.811709827, 0.202253267);
 //const vec2 z_centre = vec2(-0.776592847, 0.136640848);
+//const vec2 z_centre = vec2(-0.922947648473392, 0.29140221214586537);
 //const vec2 z_centre = vec2(-2.0,-2.0);
-const float z_radius = 0.0000220703125;
+const float z_radius = 0.00025;
 //const float z_radius = 0.2;
 
 float doubleExponentialSigmoid (float x, float a) {
@@ -71,7 +72,7 @@ void main() {
     float result;
     vec4 colour;
     
-    for(int n = 0; n < max_i; n++) {
+    for(int n = 1; n < max_i; n++) {
         float xtemp = x*x-y*y+mandel.x;
         y = 2.0*x*y+mandel.y;
         x = xtemp;
@@ -80,8 +81,6 @@ void main() {
         	result = float(n) / 100.0;
           	break;  
         };
-
-        result = 0.0;
     };
     
     if (result == 0.0) {
